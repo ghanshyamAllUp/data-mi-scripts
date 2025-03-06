@@ -5,24 +5,24 @@ export class Membership extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column()
-  membership!: string;
+  @Column({ nullable: true })
+  membership!: string  ;
 
-  @Column()
+  @Column({ nullable: true })
   category!: string;
 
   @Column({ nullable: true })
   subCategory!: string;
 
-  @Column()
+  @Column({ nullable: true })
   period!: string;
 
-  @Column()
+  @Column({ nullable: true })
   time!: string;
 
   @Column({ default: true })
   isActive!: boolean;
 
-  @Column() 
+  @Column({ nullable: true }) 
   prices!: string;
 }
