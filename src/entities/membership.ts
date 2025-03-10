@@ -23,6 +23,6 @@ export class Membership extends BaseEntity {
   @Column({ default: true })
   isActive!: boolean;
 
-  @Column({ nullable: true }) 
+  @Column({ type: 'text', nullable: true }) 
   prices!: string;
 }
