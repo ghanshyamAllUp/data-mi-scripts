@@ -60,6 +60,6 @@ export class Lead extends BaseEntity {
   companyIndustry!: string; // Industry of the lead's company
 
   // Rate
-  @Column({ type: "decimal", precision: 10, scale: 2, nullable: true })
-  rate!: number; // Rate associated with the lead (e.g., budget, pricing)
+  @Column({ type: "text", nullable: true })
+  rate!: string; // Rate associated with the lead (e.g., budget, pricing)
 }
