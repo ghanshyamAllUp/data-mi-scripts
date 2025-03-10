@@ -3,6 +3,7 @@ import { AppDataSource } from "./connection/data-source";
 import { Membership } from "./entities/membership";
 import multer from "multer";
 import * as XLSX from "xlsx";
+import { console } from "inspector";
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,7 @@ const PORT = 4011;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "src/uploads/");  
+    cb(null, "uploads");  
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);  
@@ -31,7 +32,6 @@ const upload = multer({ storage, fileFilter });
 
 app.get('/memberships', async (req: Request, res: Response) => {
     try {
-        console.log("hello");
       const memberships = await Membership.find();
       res.json(memberships);
     } catch (error) {
@@ -44,7 +44,8 @@ app.get('/memberships', async (req: Request, res: Response) => {
       if (!req.file) {
         res.status(400).json({ message: "No file uploaded." });
       }else{
-  
+    
+        console.log("hllo ghan")
 
       const workbook = XLSX.readFile(req.file.path);
       const sheetName = workbook.SheetNames[0]; 
@@ -53,6 +54,7 @@ app.get('/memberships', async (req: Request, res: Response) => {
   
     const jsonData : any[]= XLSX.utils.sheet_to_json(worksheet, { defval: null });
   
+        console.log("hllo ghan2");
     const memberships = jsonData.map((row) => {
  
       
